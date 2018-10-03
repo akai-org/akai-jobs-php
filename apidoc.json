@@ -1,0 +1,10 @@
+{
+  "name": "Akai Jobs",
+  "version": "0.1.0",
+  "description": "Service for students searching for jobs and jobs searching for students",
+  "title": "Akai Jobs",
+  "template" : {
+    "withCompare" : false
+  },
+  "order": []
+}
