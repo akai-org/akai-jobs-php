@@ -26,4 +26,8 @@ class JobOffer extends Model
         return $this->belongsTo('App\Area');
     }
 
+    public function fillWithData(){
+
+    }
+
 }
