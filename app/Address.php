@@ -10,4 +10,6 @@ class Address extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     public $timestamps = false;
+
+    // TODO funkcja sprawdzająca, czy adres o podanych danych już istnieje i tworząca nowy, jeżeli nie istnieje
 }

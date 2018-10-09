@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 // Route added for standarization - gives possibility to log in through /api/ URI
 Route::post('oauth/token', 'Auth\NewAccessTokenController@issueToken');
 
+Route::resource('jobOffers', 'Api\JobOfferController');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

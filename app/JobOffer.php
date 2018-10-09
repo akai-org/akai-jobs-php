@@ -26,8 +26,15 @@ class JobOffer extends Model
         return $this->belongsTo('App\Area');
     }
 
-    public function fillWithData(){
+    public function fill(array $attributes)
+    {
+        // TODO tworzenie nowego adresu lub przypisywanie do istniejącego, jeżeli taki juz istnieje
+    }
 
+    public static function create($attributes)
+    {
+        $jobOffer = new self();
+        return $jobOffer->fill($attributes);
     }
 
 }
