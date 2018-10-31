@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\JobOfferIndexRequest;
+use App\Http\Requests\StoreNewJobOfferRequest;
 use App\JobOffer;
 use Illuminate\Http\Request;
-use Illuminate\Queue\Jobs\Job;
 
 class JobOfferController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
+     * @param JobOfferIndexRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(JobOfferIndexRequest $request)
@@ -39,7 +40,7 @@ class JobOfferController extends ApiController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNewJobOfferRequest $request)
     {
         // TODO walidacja całego store job offers, również składowych adresu
 
@@ -55,11 +56,17 @@ class JobOfferController extends ApiController
      * Display the specified resource.
      *
      * @param  \App\JobOffer $jobOffer
-     * @return void
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function show(JobOffer $jobOffer)
     {
-        //
+
+        return response([
+            'message' => __('Pomyślnie utworzono nową ofertę pracy'),
+            'data' => [
+                'jobOffer' => $jobOffer
+            ]
+        ]);
     }
 
     /**
@@ -67,11 +74,17 @@ class JobOfferController extends ApiController
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \App\JobOffer $jobOffer
-     * @return void
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function update(Request $request, JobOffer $jobOffer)
     {
-        //
+
+        return response([
+            'message' => __('Pomyślnie utworzono nową ofertę pracy'),
+            'data' => [
+                'jobOffer' => $jobOffer
+            ]
+        ]);
     }
 
     /**
@@ -84,7 +97,6 @@ class JobOfferController extends ApiController
     public function destroy(JobOffer $jobOffer)
     {
         $jobOffer->delete();
-
         return response([
             'message' => __('Pomyslnie usunięto wskazaną ofertę pracy')
         ]);

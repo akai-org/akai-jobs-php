@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58084bdfcb05c7883476cc0724d6c2bd",
+    "content-hash": "023a8f25cb0c40ee6cd0a977c2e10a0a",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -477,16 +477,16 @@
         },
         {
             "name": "gumkle/laravel_sniffer",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gumkle/laravel_sniffer.git",
-                "reference": "a056b16cf913b2195b8bc567127b0ae2c0724694"
+                "reference": "748730cb47b43d55ec69c1e0881f630b5f1fe33b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gumkle/laravel_sniffer/zipball/a056b16cf913b2195b8bc567127b0ae2c0724694",
-                "reference": "a056b16cf913b2195b8bc567127b0ae2c0724694",
+                "url": "https://api.github.com/repos/Gumkle/laravel_sniffer/zipball/748730cb47b43d55ec69c1e0881f630b5f1fe33b",
+                "reference": "748730cb47b43d55ec69c1e0881f630b5f1fe33b",
                 "shasum": ""
             },
             "type": "laravel-plugin",
@@ -503,7 +503,7 @@
                 }
             ],
             "description": "Package for making filtering in Laravel easier",
-            "time": "2018-10-29T05:53:19+00:00"
+            "time": "2018-10-31T16:54:19+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

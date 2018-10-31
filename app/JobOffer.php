@@ -2,11 +2,11 @@
 
 namespace App;
 
-use http\Env\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PhpParser\Builder;
 use Sniffer\Sniffer;
+use Illuminate\Http\Request;
 
 class JobOffer extends Model
 {
@@ -43,6 +43,7 @@ class JobOffer extends Model
     public static function applyFilters(Request $request)
     {
         $query = self::query();
+
         Sniffer::searchFilter($query, $request['keyword'], [
             'name',
             'description'
@@ -61,5 +62,7 @@ class JobOffer extends Model
             'position_id' => $request['positions'],
             'degree_id' => $request['degrees'],
         ]);
+
+        return $query;
     }
 }
