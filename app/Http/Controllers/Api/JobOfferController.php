@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Address;
 use App\Http\Requests\JobOfferIndexRequest;
 use App\Http\Requests\StoreNewJobOfferRequest;
+use App\Http\Requests\UpdateJobOfferRequest;
 use App\JobOffer;
 use App\Position;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Jobs\Job;
 use Illuminate\Support\Facades\Auth;
 
 class JobOfferController extends ApiController
@@ -47,18 +49,10 @@ class JobOfferController extends ApiController
     public function store(StoreNewJobOfferRequest $request)
     {
         $user    = auth('api')->user();
-        $jobOffer = JobOffer::createWithData([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'salary' => $request['salary'],
-            'start_date' => Carbon::parse($request['start_date']),
-            'end_date' => Carbon::parse($request['end_date']),
-            'area_id' => $request['area_id'],
-            'position_id' => Position::createOrAssign($request['position']),
-            'degree_id' => $request['degree_id'],
-            'address_id' => $address_id = Address::createOrAssign($request->toArray()),
-            'company_id' => $user->company_id
-        ]);
+        $newModelData = $request->toArray();
+        $newModelData['company_id'] = $user->company_id;
+
+        $jobOffer = JobOffer::createWithData($newModelData);
 
         return response([
             'message' => __('Pomyślnie utworzono nową ofertę pracy'),
@@ -76,11 +70,10 @@ class JobOfferController extends ApiController
      */
     public function show(JobOffer $jobOffer)
     {
-
         return response([
             'message' => __('Pomyślnie utworzono nową ofertę pracy'),
             'data' => [
-                'jobOffer' => $jobOffer
+                'jobOffer' => $jobOffer->with(['position', 'company', 'address', 'area', 'degree'])
             ]
         ]);
     }
@@ -88,15 +81,17 @@ class JobOfferController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param UpdateJobOfferRequest $request
      * @param  \App\JobOffer $jobOffer
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function update(Request $request, JobOffer $jobOffer)
+    public function update(UpdateJobOfferRequest $request, JobOffer $jobOffer)
     {
-
+        $user = auth('api')->user();
+        $jobOffer = $jobOffer->fillWithData($request->toArray());
+        dd($request->toArray());
         return response([
-            'message' => __('Pomyślnie utworzono nową ofertę pracy'),
+            'message' => __('Pomyślnie zaktualizowano ofertę pracy'),
             'data' => [
                 'jobOffer' => $jobOffer
             ]

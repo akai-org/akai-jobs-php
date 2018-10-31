@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PhpParser\Builder;
@@ -31,16 +32,35 @@ class JobOffer extends Model
 
     public function fillWithData(array $attributes)
     {
-        $this->name = $attributes['name'];
-        $this->description = $attributes['description'];
-        $this->salary = $attributes['salary'];
-        $this->start_date = $attributes['start_date'];
-        $this->end_date = $attributes['end_date'];
-        $this->area_id = $attributes['area_id'];
-        $this->position_id = $attributes['position_id'];
-        $this->degree_id = $attributes['degree_id'];
-        $this->address_id = $attributes['address_id'];
-        $this->company_id = $attributes['company_id'];
+        $isAddressPresent =
+            (
+                isset($attributes['country']) ||
+                isset($attributes['city']) ||
+                isset($attributes['address']) ||
+                isset($attributes['postal_code'])
+            );
+
+        if (isset($attributes['name']))
+            $this->name = $attributes['name'];
+        if (isset($attributes['description']))
+            $this->description = $attributes['description'];
+        if (isset($attributes['salary']))
+            $this->salary = $attributes['salary'];
+        if (isset($attributes['start_date']))
+            $this->start_date = Carbon::parse($attributes['start_date']);
+        if (isset($attributes['end_date']))
+            $this->end_date = Carbon::parse($attributes['end_date']);
+        if (isset($attributes['area_id']))
+            $this->area_id = $attributes['area_id'];
+        if (isset($attributes['position']))
+            $this->position_id = Position::createOrAssign($attributes['position']);
+        if (isset($attributes['degree_id']))
+            $this->degree_id = $attributes['degree_id'];
+        if ($isAddressPresent)
+            $this->address_id = Address::createOrAssign($attributes);
+        if (isset($attributes['company_id']))
+            $this->company_id = $attributes['company_id'];
+
         $this->save();
         return $this;
     }
