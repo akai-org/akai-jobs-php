@@ -42,7 +42,7 @@ class JobOfferController extends ApiController
      */
     public function store(StoreNewJobOfferRequest $request)
     {
-        // TODO walidacja całego store job offers, również składowych adresu
+        
 
         return response([
             'message' => __('Pomyślnie utworzono nową ofertę pracy'),
