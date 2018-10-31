@@ -24,7 +24,9 @@ class NewAccessTokenController extends AccessTokenController
         // Pozyskiwanie odpowiedzi
         $response               = parent::issueToken($request);
         $parsedResponse         = json_decode($response->content());
-        $requestedUserEmail     = $request->getParsedBody()['username'];
+        $requestedUserEmail     = null;
+        if (isset($request->getParsedBody()['username']))
+            $requestedUserEmail = $request->getParsedBody()['username'];
         $requestedUser          = User::where('email', $requestedUserEmail)->first();
 
         // Jeżeli próba się nie udała
@@ -34,7 +36,7 @@ class NewAccessTokenController extends AccessTokenController
             Log::notice('Nieudana próba logowania', [
                 'ip'     => $_SERVER['REMOTE_ADDR'],
                 'error'  => $parsedResponse->message,
-                'user'   => ($requestedUser)? $requestedUser->email: null
+                'user'   => (isset($requestedUser))? $requestedUser->email: null
             ]);
 
             //Przetłumacz odpowiedź

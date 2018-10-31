@@ -16,7 +16,7 @@ class BaseRequest extends Request
 {
     public function expectsJson()
     {
-        if($this->segment(1) == 'api')
+        if($this->segment(1) == 'apiv1')
             return true;
         else
             return parent::expectsJson();
@@ -24,7 +24,7 @@ class BaseRequest extends Request
     }
     public function wantsJson()
     {
-        if($this->segment(1) == 'api')
+        if($this->segment(1) == 'apiv1')
             return true;
         else
             return parent::wantsJson();
