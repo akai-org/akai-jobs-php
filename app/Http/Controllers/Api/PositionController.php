@@ -14,7 +14,7 @@ class PositionController extends ApiController
      */
     public function index()
     {
-        //
+        
     }
 
     /**

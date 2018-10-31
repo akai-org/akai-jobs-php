@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d587cfddb43b67d104a9a21568d2468",
+    "content-hash": "58084bdfcb05c7883476cc0724d6c2bd",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -474,6 +474,36 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
+        },
+        {
+            "name": "gumkle/laravel_sniffer",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gumkle/laravel_sniffer.git",
+                "reference": "a056b16cf913b2195b8bc567127b0ae2c0724694"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gumkle/laravel_sniffer/zipball/a056b16cf913b2195b8bc567127b0ae2c0724694",
+                "reference": "a056b16cf913b2195b8bc567127b0ae2c0724694",
+                "shasum": ""
+            },
+            "type": "laravel-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Sniffer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Dawid Dziedzic",
+                    "email": "dziedzicdev@gmail.com"
+                }
+            ],
+            "description": "Package for making filtering in Laravel easier",
+            "time": "2018-10-29T05:53:19+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
