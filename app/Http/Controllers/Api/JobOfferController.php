@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Address;
 use App\Http\Requests\JobOfferIndexRequest;
 use App\Http\Requests\StoreNewJobOfferRequest;
 use App\Http\Requests\UpdateJobOfferRequest;
 use App\JobOffer;
-use App\Position;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Queue\Jobs\Job;
-use Illuminate\Support\Facades\Auth;
 
 class JobOfferController extends ApiController
 {
