@@ -20,9 +20,10 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('test123'),
                 'email' => 'test@test.pl',
                 'phone' => '123234345',
-                'address_id' => '1',
-                'degree_id' => '2',
+                'address_id' => 1,
+                'degree_id' => 2,
                 'email_verified_at' => Carbon::now(),
+                'company_id' => 3
             ]
         ]);
     }

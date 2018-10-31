@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Address;
 use App\Http\Requests\JobOfferIndexRequest;
 use App\Http\Requests\StoreNewJobOfferRequest;
 use App\JobOffer;
+use App\Position;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobOfferController extends ApiController
 {
@@ -37,12 +41,24 @@ class JobOfferController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param StoreNewJobOfferRequest $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function store(StoreNewJobOfferRequest $request)
     {
-        
+        $user    = auth('api')->user();
+        $jobOffer = JobOffer::createWithData([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'salary' => $request['salary'],
+            'start_date' => Carbon::parse($request['start_date']),
+            'end_date' => Carbon::parse($request['end_date']),
+            'area_id' => $request['area_id'],
+            'position_id' => Position::createOrAssign($request['position']),
+            'degree_id' => $request['degree_id'],
+            'address_id' => $address_id = Address::createOrAssign($request->toArray()),
+            'company_id' => $user->company_id
+        ]);
 
         return response([
             'message' => __('Pomyślnie utworzono nową ofertę pracy'),

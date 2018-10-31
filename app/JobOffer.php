@@ -31,13 +31,24 @@ class JobOffer extends Model
 
     public function fillWithData(array $attributes)
     {
-        // TODO tworzenie nowego adresu lub przypisywanie do istniejącego, jeżeli taki juz istnieje
+        $this->name = $attributes['name'];
+        $this->description = $attributes['description'];
+        $this->salary = $attributes['salary'];
+        $this->start_date = $attributes['start_date'];
+        $this->end_date = $attributes['end_date'];
+        $this->area_id = $attributes['area_id'];
+        $this->position_id = $attributes['position_id'];
+        $this->degree_id = $attributes['degree_id'];
+        $this->address_id = $attributes['address_id'];
+        $this->company_id = $attributes['company_id'];
+        $this->save();
+        return $this;
     }
 
     public static function createWithData($attributes)
     {
         $jobOffer = new self();
-        return $jobOffer->fill($attributes);
+        return $jobOffer->fillWithData($attributes);
     }
 
     public static function applyFilters(Request $request)

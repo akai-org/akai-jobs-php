@@ -32,6 +32,10 @@ class StoreNewJobOfferRequest extends FormRequest
                 'required',
                 'string'
             ],
+            'salary' => [
+                'required',
+                'numeric'
+            ],
             'start_date' => [
                 'required',
                 'date'
@@ -44,9 +48,9 @@ class StoreNewJobOfferRequest extends FormRequest
                 'required',
                 'integer'
             ],
-            'position_id' => [
+            'position' => [
                 'required',
-                'integer'
+                'string'
             ],
             'degree_id' => [
                 'required',
@@ -66,7 +70,7 @@ class StoreNewJobOfferRequest extends FormRequest
             ],
             'postal_code' => [
                 'required',
-                'stirng'
+                'string'
             ]
         ];
     }

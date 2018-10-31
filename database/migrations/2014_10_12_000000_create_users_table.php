@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->integer('address_id');
             $table->integer('degree_id');
+        $table->integer('company_id')->nullable(    );
             $table->timestamp('email_verified_at')->nullable();
             $table->softDeletes();
             $table->rememberToken();
