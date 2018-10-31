@@ -51,10 +51,6 @@ class NewAccessTokenController extends AccessTokenController
             // Dodaj ID usera do odpowiedzi API
             $parsedResponse->user_object = $requestedUser;
             $response->setContent(json_encode($parsedResponse));
-
-            // Loguj udaną próbę logowania
-            $requestedUser->logLogin();
-
         }
         return $response;
     }

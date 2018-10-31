@@ -40,7 +40,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  */
 
 /**
- * @api {post} api/oauth/token Login
+ * @api {post} apiv1/oauth/token Login
  *
  * @apiName         Login
  * @apiDescription  Tries to log user in. For client data go to: Clients

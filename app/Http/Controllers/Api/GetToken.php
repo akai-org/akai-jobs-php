@@ -12,7 +12,7 @@ class GetToken extends Controller
 
     /**
      *
-     * @api             {get} /api/oauth/getclients Clients
+     * @api             {get} /apiv1/oauth/getclients ApiClients
      * @apiName         PasswordClients
      * @apiDescription  Returns client list and their data to be used in authenthication
      * @apiGroup        Users

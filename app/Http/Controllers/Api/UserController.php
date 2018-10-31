@@ -86,7 +86,7 @@ class UserController extends Controller
 
     /**
      *
-     * @api             {get} /api/users/logout Logout
+     * @api             {get} /apiv1/users/logout Logout
      * @apiName         UserLogout
      * @apiDescription  Logout user.
      * @apiGroup        Users
@@ -126,7 +126,7 @@ class UserController extends Controller
 
 
     /**
-     * @api {get} api/users/:user_id My profile
+     * @api {get} apiv1/users/:user_id My profile
      *
      * @apiName         ShowMeMyself
      * @apiDescription  Get current user details
