@@ -24,7 +24,6 @@ class CreateJobOffersTable extends Migration
             $table->integer('position_id');
             $table->integer('degree_id');
             $table->integer('address_id');
-            $table->integer('company_id');
             $table->softDeletes();
             $table->timestamps();
         });
